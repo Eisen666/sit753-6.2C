@@ -51,7 +51,7 @@ pipeline {
             exailext (
             subject: "Pipeline Successful",
             body: "The Jenkins pipleline has completed successfully.",
-            attachmentPattern: '**/build.log',
+            attachmentsPattern: '**/build.log',
             to: 'eisenlai321@gmail.com'
         )
         }
@@ -60,7 +60,7 @@ pipeline {
             emailext(
                 subject:"Pipeline Failed",
                 body:"The Jenkins pipeline has failed.",
-                attachmentPattern: '**/build.log',
+                attachmentsPattern: '**/build.log',
                 to: 'eisenlai321@gmail.com'
             )
         }
