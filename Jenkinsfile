@@ -4,44 +4,44 @@ pipeline {
         stage('Build') {
             steps{
                 //Use Maven to build the code
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
         stage('Unit and Integration Tests') {
             steps{
                 //Use testing tools.( here we also can use maven to generally test, but Maven is not the spefic testing tool)
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Code Analysis') {
             steps{
-                sh 'sonar-scanner'
+                bat 'sonar-scanner'
             }
         }
 
         stage('Security Scan') {
             steps{
-                sh 'owasp-ap-scan'
+                bat 'security-scan.bat'
             }
         }
 
         stage('Deploy to Staging') {
             steps{
-                sh 'aws deploy-to-staging'
+                bat 'deploy-to-staging.bat'
             }
         }
 
         stage('Integration Tests on Staging') {
             steps{
-                sh 'mvn verify'
+                bat 'mvn verify'
             }
         }
 
         stage('Deploy to Production') {
             steps{
-                sh 'aws deploy-to-production'
+                bat 'deploy-to-production.bat'
             }
         }
     }
