@@ -48,7 +48,7 @@ pipeline {
 
     post {
         success{
-            exailext (
+            emailext (
             subject: "Pipeline Successful",
             body: "The Jenkins pipleline has completed successfully.",
             attachmentsPattern: '**/build.log',
